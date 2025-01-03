@@ -1,7 +1,8 @@
 fastapi
 requests
-openai
+openai==0.28
 nltk
 supabase
 python-dotenv
 uvicorn
+gunicorn
