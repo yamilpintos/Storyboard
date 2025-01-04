@@ -505,10 +505,13 @@ def actualizar_lookbook():
                                        .update({"Lookbook": lookbook}) \
                                        .eq("id_escena", id_escena) \
                                        .execute()
-            if update_response.error:
-                print(f"Error al actualizar Lookbook para escena {id_escena}: {update_response.error}")
-            else:
+            if update_response.status_code in range(200, 300):
                 print(f"Escena {id_escena} actualizada con Lookbook: {lookbook}")
+            else:
+                print(f"Error al actualizar Lookbook para escena {id_escena}. "
+                    f"status_code={update_response.status_code}, "
+                    f"status_text={update_response.status_text}, "
+                    f"data={update_response.data}")
         except Exception as e:
             print(f"Error al actualizar Lookbook para escena {id_escena}: {e}")
 
